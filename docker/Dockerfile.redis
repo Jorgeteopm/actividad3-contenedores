@@ -1,0 +1,13 @@
+FROM redis:7-alpine
+
+# El directorio /data ya existe en la imagen base de Redis
+# No es necesario crearlo
+
+# Copiar configuración personalizada
+COPY docker/redis.conf /usr/local/etc/redis/redis.conf
+
+# Exponer puerto
+EXPOSE 6379
+
+# Comando para ejecutar Redis
+CMD ["redis-server", "/usr/local/etc/redis/redis.conf"] 
